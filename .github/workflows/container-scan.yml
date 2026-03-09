@@ -22,4 +22,4 @@ jobs:
           image-ref: devsecops-container-lab
           format: table
           exit-code: 1
-          severity: CRIRICAL
+          severity: CRITICAL
