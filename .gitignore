@@ -1,0 +1,7 @@
+node_modules/
+semgrep-env/
+__pycache__/
+*.log
+*.json
+trivy-report.json
+
