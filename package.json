@@ -1,8 +1,8 @@
 {
-  "name": "day1-lab",
+  "name": "devsecops-container-security-lab",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "DevSecOps container security lab",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
