@@ -51,7 +51,8 @@ The goal was to implement shift-left security by ensuring that container images 
 
 ### Objectives
 - Automate Docker image builds in CI/CD
-- Integrate Trivy vulnerability scanning into the pipeline
+- Integrate SAST (Semgrep) for code analysis
+- Integrate Trivy vulnerability scanning for container security
 - Generate and store scan reports as artifacts
 - Enforce a security gate that fails builds on CRITICAL vulnerabilities
 
@@ -61,16 +62,20 @@ The goal was to implement shift-left security by ensuring that container images 
 
 On every push to the `main` branch:
 
-1. GitHub Actions builds the Docker image
-2. Trivy scans the image for vulnerabilities
-3. A JSON report (`trivy-report.json`) is generated
-4. The report is uploaded as a pipeline artifact
-5. The build fails if CRITICAL vulnerabilities are detected
+1. GitHub Actions checks out the code
+2. Semgrep performs SAST analysis on the codebase
+3. The Docker image is built
+4. Trivy scans the container image for vulnerabilities
+5. A JSON report (`trivy-report.json`) is generated
+6. The report is uploaded as a pipeline artifact
+7. The build fails if CRITICAL vulnerabilities are detected
 
 ---
 
 ### Workflow Architecture
 Code Push\
+↓\
+Run Semgrep (SAST)
 ↓\
 Build Docker Image\
 ↓\
@@ -95,6 +100,7 @@ Enforce Security Policy (Fail on CRITICAL)
 - Separation of scanning and enforcement in CI pipelines
 - Handling vulnerabilities in automated workflows
 - Real-world DevSecOps practice: balancing visibility vs enforcement
+- Difference between SAST (code-level scanning) and container vulnerability scanning
 
 ---
 
